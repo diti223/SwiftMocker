@@ -10,6 +10,8 @@
 		2E881688218D7EC30058B67A /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E881687218D7EC30058B67A /* main.swift */; };
 		2E88168F218D7EE40058B67A /* FunctionTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E88168E218D7EE40058B67A /* FunctionTransformer.swift */; };
 		2E881693218D7FBE0058B67A /* Functions.in in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2E881690218D7F2E0058B67A /* Functions.in */; };
+		2E88169B218DD7B80058B67A /* SwiftMockerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E88169A218DD7B80058B67A /* SwiftMockerTests.swift */; };
+		2E8816A0218DD8760058B67A /* FunctionTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E88168E218D7EE40058B67A /* FunctionTransformer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -39,10 +41,20 @@
 		2E881687218D7EC30058B67A /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		2E88168E218D7EE40058B67A /* FunctionTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionTransformer.swift; sourceTree = "<group>"; };
 		2E881690218D7F2E0058B67A /* Functions.in */ = {isa = PBXFileReference; lastKnownFileType = text; path = Functions.in; sourceTree = "<group>"; };
+		2E881698218DD7B80058B67A /* SwiftMockerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftMockerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2E88169A218DD7B80058B67A /* SwiftMockerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftMockerTests.swift; sourceTree = "<group>"; };
+		2E88169C218DD7B80058B67A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		2E881681218D7EC30058B67A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2E881695218DD7B80058B67A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -56,6 +68,7 @@
 			isa = PBXGroup;
 			children = (
 				2E881686218D7EC30058B67A /* SwiftMocker */,
+				2E881699218DD7B80058B67A /* SwiftMockerTests */,
 				2E881685218D7EC30058B67A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -64,6 +77,7 @@
 			isa = PBXGroup;
 			children = (
 				2E881684218D7EC30058B67A /* SwiftMocker */,
+				2E881698218DD7B80058B67A /* SwiftMockerTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -76,6 +90,15 @@
 				2E881690218D7F2E0058B67A /* Functions.in */,
 			);
 			path = SwiftMocker;
+			sourceTree = "<group>";
+		};
+		2E881699218DD7B80058B67A /* SwiftMockerTests */ = {
+			isa = PBXGroup;
+			children = (
+				2E88169A218DD7B80058B67A /* SwiftMockerTests.swift */,
+				2E88169C218DD7B80058B67A /* Info.plist */,
+			);
+			path = SwiftMockerTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -99,6 +122,23 @@
 			productReference = 2E881684218D7EC30058B67A /* SwiftMocker */;
 			productType = "com.apple.product-type.tool";
 		};
+		2E881697218DD7B80058B67A /* SwiftMockerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2E88169D218DD7B80058B67A /* Build configuration list for PBXNativeTarget "SwiftMockerTests" */;
+			buildPhases = (
+				2E881694218DD7B80058B67A /* Sources */,
+				2E881695218DD7B80058B67A /* Frameworks */,
+				2E881696218DD7B80058B67A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SwiftMockerTests;
+			productName = SwiftMockerTests;
+			productReference = 2E881698218DD7B80058B67A /* SwiftMockerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -110,6 +150,9 @@
 				ORGANIZATIONNAME = Bilescu;
 				TargetAttributes = {
 					2E881683218D7EC30058B67A = {
+						CreatedOnToolsVersion = 10.0;
+					};
+					2E881697218DD7B80058B67A = {
 						CreatedOnToolsVersion = 10.0;
 					};
 				};
@@ -127,9 +170,20 @@
 			projectRoot = "";
 			targets = (
 				2E881683218D7EC30058B67A /* SwiftMocker */,
+				2E881697218DD7B80058B67A /* SwiftMockerTests */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2E881696218DD7B80058B67A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		2E881680218D7EC30058B67A /* Sources */ = {
@@ -138,6 +192,15 @@
 			files = (
 				2E881688218D7EC30058B67A /* main.swift in Sources */,
 				2E88168F218D7EE40058B67A /* FunctionTransformer.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2E881694218DD7B80058B67A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2E88169B218DD7B80058B67A /* SwiftMockerTests.swift in Sources */,
+				2E8816A0218DD8760058B67A /* FunctionTransformer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,6 +340,40 @@
 			};
 			name = Release;
 		};
+		2E88169E218DD7B80058B67A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = SwiftMockerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.bilescu.SwiftMockerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+			};
+			name = Debug;
+		};
+		2E88169F218DD7B80058B67A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = SwiftMockerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.bilescu.SwiftMockerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -294,6 +391,15 @@
 			buildConfigurations = (
 				2E88168C218D7EC30058B67A /* Debug */,
 				2E88168D218D7EC30058B67A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2E88169D218DD7B80058B67A /* Build configuration list for PBXNativeTarget "SwiftMockerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2E88169E218DD7B80058B67A /* Debug */,
+				2E88169F218DD7B80058B67A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
