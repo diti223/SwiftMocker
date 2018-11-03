@@ -1,4 +1,4 @@
 language: swift
 xcode_project: SwiftMocker/SwiftMocker.xcodeproj # path to the xcodeproj folder
-xcode_scheme: SwiftMockerTests
+xcode_scheme: SwiftMocker
 xcode_destination: platform=macOS
