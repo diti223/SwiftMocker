@@ -1,0 +1,4 @@
+func handleConfigFile(response: ConfigFileResponse)
+func handleAuthentication(response: AuthenticationResponse)
+func handleAuthentication(error: Error)
+func createComplexHuman(stamina: Double, strength: Int, completion: @escaping ((Human?)->()))
