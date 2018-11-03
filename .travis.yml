@@ -3,3 +3,7 @@ xcode_project: SwiftMocker/SwiftMocker.xcodeproj # path to the xcodeproj folder
 xcode_scheme: SwiftMocker
 osx_image: xcode10.1
 xcode_destination: platform=macOS
+script:
+  - xcodebuild -project SwiftMocker/SwiftMocker.xcodeproj -scheme SwiftMocker -destination platform\=macOS build test
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
