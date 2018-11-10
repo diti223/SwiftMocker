@@ -1,6 +1,6 @@
 //
-//  SwiftMockerTests.swift
-//  SwiftMockerTests
+//  FunctionTests.swift
+//  FunctionTests
 //
 //  Created by Adrian-Dieter Bilescu on 11/3/18.
 //  Copyright © 2018 Bilescu. All rights reserved.
@@ -8,7 +8,7 @@
 
 import XCTest
 
-class SwiftMockerTests: XCTestCase {
+class FunctionTests: XCTestCase {
 
     var sut: FunctionTransformer!
     
@@ -286,6 +286,33 @@ class SwiftMockerTests: XCTestCase {
         let actual = sut.returnProperty!.implementationDescription
         XCTAssertEqual(expected, actual)
     }
+    
+    //MARK: - Parameter Property Suffix
+    
+    func testFunctionNameSuffixEqualToParameterName_ShouldAppearOnceInParamaterProperty() {
+        makeSubject(with: "handleConfigFile(file: ConfigFile)")
+        
+        let expected = "invokedHandleConfigFile"
+        let actual = sut.parameterProperties.first?.name
+        XCTAssertEqual(expected, actual)
+    }
+    
+    func testFunctionNameSuffixEqualToParameterName_ParameterHiddenName_ShouldAppearOnceInParamaterProperty() {
+        makeSubject(with: "handleConfigFile(_ file: ConfigFile)")
+        
+        let expected = "invokedHandleConfigFile"
+        let actual = sut.parameterProperties.first?.name
+        XCTAssertEqual(expected, actual)
+    }
+    
+    func testFunctionNameSuffixEqualToParameterName_ParameterLabeled_ShouldAppearOnceInParamaterProperty() {
+        makeSubject(with: "handleConfigFile(file configFile: ConfigFile)")
+        
+        let expected = "invokedHandleConfigFile"
+        let actual = sut.parameterProperties.first?.name
+        XCTAssertEqual(expected, actual)
+    }
+    
     
     func testFunction_MockDescription() {
         makeSubject(with: "handleConfigFile(response: ConfigFileResponse, completion: ()->()) -> Int")

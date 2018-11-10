@@ -8,81 +8,6 @@
 
 import Foundation
 
-protocol Property {
-    var name: String { get }
-    var type: String { get }
-    var declarationDescription: String { get }
-}
-
-struct ParameterProperty: Property {
-    
-    let name: String
-    let type: String
-    private let parameterName: String
-    
-    init(name: String, type: String, parameterName: String) {
-        self.name = name
-        self.type = type
-        self.parameterName = parameterName
-    }
-    
-    var declarationDescription: String {
-        if isOptionalType {
-            return "var \(name): \(type)"
-        }
-        return "var \(name): \(type)?"
-    }
-    
-    var implementationDescription: String {
-        return "\(name) = \(parameterName)"
-    }
-}
-
-struct ReturnProperty: Property {
-    let name: String
-    let type: String
-    
-    var declarationDescription: String {
-        if isOptionalType {
-            return "var \(name): \(type)"
-        }
-        
-        return "var \(name): \(type)?"
-    }
-    
-    var implementationDescription: String {
-        var result = "return \(name)"
-        if !isOptionalType {
-            result.append("!")
-        }
-        return result
-    }
-}
-
-struct InvokedCountProperty: Property {
-    let name: String
-    let type: String
-    
-    init(name: String, type: String) {
-        self.name = name
-        self.type = type
-    }
-    
-    var declarationDescription: String {
-        return "var \(name) = 0"
-    }
-    
-    var implementationDescription: String {
-        return "\(name) += 1"
-    }
-}
-
-extension Property {
-    var isOptionalType: Bool {
-        return type.hasSuffix("?")
-    }
-}
-
 class FunctionTransformer {
     
     var invokedCountProperty: InvokedCountProperty {
@@ -141,11 +66,11 @@ class FunctionTransformer {
         
         if let returnProperty = returnProperty {
             result.addNewLineTab()
-            if returnProperty.isOptionalType {
-                result.append("return \(returnProperty.name)")
-            } else {
+//            if returnProperty.isOptionalType {
+//                result.append("return \(returnProperty.name)")
+//            } else {
                 result.append("return \(returnProperty.name)!")
-            }
+//            }
         }
         result.append("\n}")
         return result
@@ -168,7 +93,7 @@ class FunctionTransformer {
     }
     
     private func extractReturnString() {
-        guard let indexOfFirstParenthesis = functionName.firstIndex(of: "(") else { return }
+        let indexOfFirstParenthesis = functionName.firstIndex(of: "(")!
         var openCloseParenthesisChecker = 0
         var endOfParametersIndex: String.Index?
         for enumeratedCharacter in functionName[indexOfFirstParenthesis..<functionName.endIndex].enumerated() {
@@ -182,10 +107,7 @@ class FunctionTransformer {
             }
         }
         
-        guard let startReturnIndex = endOfParametersIndex else {
-            return
-        }
-        
+        let startReturnIndex = endOfParametersIndex!
         let rawReturnString = String(functionName[startReturnIndex..<functionName.endIndex])
         functionName = String(functionName[...startReturnIndex])
         guard let endOfReturnSymbolIndex = rawReturnString.firstIndex(of: ">") else { return }
@@ -200,10 +122,8 @@ class FunctionTransformer {
     }
     
     private func extractParametersString() {
-        guard let openParenthesisIndex = functionName.firstIndex(of: "("),
-            let closeParenthesisIndex = functionName.lastIndex(of: ")") else {
-                return
-        }
+        let openParenthesisIndex = functionName.firstIndex(of: "(")!
+        let closeParenthesisIndex = functionName.lastIndex(of: ")")!
         
         let startIndex = functionName.index(openParenthesisIndex, offsetBy: 1)
         let endIndex = functionName.index(closeParenthesisIndex, offsetBy: -1)
@@ -217,17 +137,12 @@ class FunctionTransformer {
     
     
     private func clearFunctionParentheses() {
-        guard let openParenthesisIndex = functionName.firstIndex(of: "(") else {
-            return
-        }
-        
+        let openParenthesisIndex = functionName.firstIndex(of: "(")!
         functionName = String(functionName[functionName.startIndex..<openParenthesisIndex])
     }
     
     private func clearFunctionPrefix() {
-        guard let prefixFuncRange = functionName.range(of: "func") else {
-            return
-        }
+        let prefixFuncRange = functionName.range(of: "func")!
         
         functionName = String(functionName[prefixFuncRange.upperBound..<functionName.endIndex])
     }
@@ -236,25 +151,6 @@ class FunctionTransformer {
         functionName = functionName.replacingWhiteSpace()
     }
 }
-
-extension String {
-    var capFirst: String {
-        return prefix(1).uppercased() + dropFirst()
-    }
-    
-    func replacingWhiteSpace() -> String {
-        return self.replacingOccurrences(of: " ", with: "")
-    }
-    
-    mutating func addNewLine() {
-        self.append("\n")
-    }
-    
-    mutating func addNewLineTab() {
-        self.append("\n\t")
-    }
-}
-
 
 // MARK: - ParameterProperty
 private extension ParameterProperty {
@@ -269,23 +165,42 @@ private extension ParameterProperty {
     }
     
     static func extractProperty(rawName: String, rawType: String, functionName: String) -> ParameterProperty? {
+        let parameterName = extractParameterName(fromRawName: rawName)
+        let parameterType = extractParameterType(fromRawType: rawType)
+        return composePropertyFrom(parameter: parameterName, type: parameterType, function: functionName)
+    }
     
+    static func extractParameterName(fromRawName rawName: String) -> String {
         var rawName = rawName
         if let lastCommaIndex = rawName.lastIndex(of: ",") {
             rawName = String(rawName[lastCommaIndex..<rawName.endIndex])
         }
-        
+        let parameterName = removingLabelFrom(parameterName: rawName).replacingWhiteSpace()
+        return parameterName
+    }
+    
+    static func extractParameterType(fromRawType rawType: String) -> String {
         var rawType = rawType
         if let lastCommaIndex = rawType.lastIndex(of: ","),
             !isEnclosedInParentheses(string: rawType) {
             rawType = String(rawType[rawType.startIndex..<lastCommaIndex])
             
         }
-        
-        let parameterName = removingLabelFrom(parameterName: rawName).replacingWhiteSpace()
         rawType = replacingKeywords(fromParameterType: rawType)
         let parameterType = rawType.trimmingCharacters(in: .whitespaces)
-        return ParameterProperty(name: "invoked\(functionName.capFirst)\(parameterName.capFirst)", type: "\(parameterType)", parameterName: parameterName)
+        return parameterType
+    }
+    
+    static func composePropertyFrom(parameter: String, type: String, function: String) -> ParameterProperty? {
+        let capitalizedParameter = parameter.capFirst
+        let capitalizedFunction = function.capFirst
+        let propertyName: String
+        if capitalizedFunction.hasSuffix(capitalizedParameter) {
+            propertyName = capitalizedFunction
+        } else {
+            propertyName = capitalizedFunction + capitalizedParameter
+        }
+        return ParameterProperty(name: "invoked\(propertyName)", type: "\(type)", parameterName: parameter)
     }
     
     private static func removingLabelFrom(parameterName: String) -> String {

@@ -7,10 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E6D99392196FDFE001102FC /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6D99382196FDFE001102FC /* String+Extensions.swift */; };
+		2E6D993B2196FE22001102FC /* Property.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6D993A2196FE22001102FC /* Property.swift */; };
+		2E6D993F2196FE45001102FC /* ParameterProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6D993E2196FE45001102FC /* ParameterProperty.swift */; };
+		2E6D99412196FE55001102FC /* ReturnProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6D99402196FE55001102FC /* ReturnProperty.swift */; };
+		2E6D99432196FE7C001102FC /* InvokedCountProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6D99422196FE7C001102FC /* InvokedCountProperty.swift */; };
+		2E6D99442196FEB2001102FC /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6D99382196FDFE001102FC /* String+Extensions.swift */; };
+		2E6D99452196FEB7001102FC /* Property.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6D993A2196FE22001102FC /* Property.swift */; };
+		2E6D99462196FEB7001102FC /* ParameterProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6D993E2196FE45001102FC /* ParameterProperty.swift */; };
+		2E6D99472196FEB7001102FC /* ReturnProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6D99402196FE55001102FC /* ReturnProperty.swift */; };
+		2E6D99482196FEB7001102FC /* InvokedCountProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6D99422196FE7C001102FC /* InvokedCountProperty.swift */; };
 		2E881688218D7EC30058B67A /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E881687218D7EC30058B67A /* main.swift */; };
 		2E88168F218D7EE40058B67A /* FunctionTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E88168E218D7EE40058B67A /* FunctionTransformer.swift */; };
 		2E881693218D7FBE0058B67A /* Functions.in in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2E881690218D7F2E0058B67A /* Functions.in */; };
-		2E88169B218DD7B80058B67A /* SwiftMockerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E88169A218DD7B80058B67A /* SwiftMockerTests.swift */; };
+		2E88169B218DD7B80058B67A /* FunctionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E88169A218DD7B80058B67A /* FunctionTests.swift */; };
 		2E8816A0218DD8760058B67A /* FunctionTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E88168E218D7EE40058B67A /* FunctionTransformer.swift */; };
 /* End PBXBuildFile section */
 
@@ -37,12 +47,17 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2E6D99382196FDFE001102FC /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		2E6D993A2196FE22001102FC /* Property.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Property.swift; sourceTree = "<group>"; };
+		2E6D993E2196FE45001102FC /* ParameterProperty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParameterProperty.swift; sourceTree = "<group>"; };
+		2E6D99402196FE55001102FC /* ReturnProperty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReturnProperty.swift; sourceTree = "<group>"; };
+		2E6D99422196FE7C001102FC /* InvokedCountProperty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvokedCountProperty.swift; sourceTree = "<group>"; };
 		2E881684218D7EC30058B67A /* SwiftMocker */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SwiftMocker; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E881687218D7EC30058B67A /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		2E88168E218D7EE40058B67A /* FunctionTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionTransformer.swift; sourceTree = "<group>"; };
 		2E881690218D7F2E0058B67A /* Functions.in */ = {isa = PBXFileReference; lastKnownFileType = text; path = Functions.in; sourceTree = "<group>"; };
 		2E881698218DD7B80058B67A /* SwiftMockerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftMockerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		2E88169A218DD7B80058B67A /* SwiftMockerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftMockerTests.swift; sourceTree = "<group>"; };
+		2E88169A218DD7B80058B67A /* FunctionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionTests.swift; sourceTree = "<group>"; };
 		2E88169C218DD7B80058B67A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -64,6 +79,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2E6D993C2196FE2E001102FC /* Properties */ = {
+			isa = PBXGroup;
+			children = (
+				2E6D993A2196FE22001102FC /* Property.swift */,
+				2E6D993E2196FE45001102FC /* ParameterProperty.swift */,
+				2E6D99402196FE55001102FC /* ReturnProperty.swift */,
+				2E6D99422196FE7C001102FC /* InvokedCountProperty.swift */,
+			);
+			path = Properties;
+			sourceTree = "<group>";
+		};
+		2E6D993D2196FE34001102FC /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				2E6D99382196FDFE001102FC /* String+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		2E6D99492196FEDF001102FC /* FunctionTransformer */ = {
+			isa = PBXGroup;
+			children = (
+				2E88168E218D7EE40058B67A /* FunctionTransformer.swift */,
+				2E6D993C2196FE2E001102FC /* Properties */,
+			);
+			path = FunctionTransformer;
+			sourceTree = "<group>";
+		};
 		2E88167B218D7EC30058B67A = {
 			isa = PBXGroup;
 			children = (
@@ -86,7 +129,8 @@
 			isa = PBXGroup;
 			children = (
 				2E881687218D7EC30058B67A /* main.swift */,
-				2E88168E218D7EE40058B67A /* FunctionTransformer.swift */,
+				2E6D99492196FEDF001102FC /* FunctionTransformer */,
+				2E6D993D2196FE34001102FC /* Extensions */,
 				2E881690218D7F2E0058B67A /* Functions.in */,
 			);
 			path = SwiftMocker;
@@ -95,7 +139,7 @@
 		2E881699218DD7B80058B67A /* SwiftMockerTests */ = {
 			isa = PBXGroup;
 			children = (
-				2E88169A218DD7B80058B67A /* SwiftMockerTests.swift */,
+				2E88169A218DD7B80058B67A /* FunctionTests.swift */,
 				2E88169C218DD7B80058B67A /* Info.plist */,
 			);
 			path = SwiftMockerTests;
@@ -190,7 +234,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E6D99412196FE55001102FC /* ReturnProperty.swift in Sources */,
 				2E881688218D7EC30058B67A /* main.swift in Sources */,
+				2E6D99432196FE7C001102FC /* InvokedCountProperty.swift in Sources */,
+				2E6D993F2196FE45001102FC /* ParameterProperty.swift in Sources */,
+				2E6D99392196FDFE001102FC /* String+Extensions.swift in Sources */,
+				2E6D993B2196FE22001102FC /* Property.swift in Sources */,
 				2E88168F218D7EE40058B67A /* FunctionTransformer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -199,7 +248,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2E88169B218DD7B80058B67A /* SwiftMockerTests.swift in Sources */,
+				2E6D99472196FEB7001102FC /* ReturnProperty.swift in Sources */,
+				2E88169B218DD7B80058B67A /* FunctionTests.swift in Sources */,
+				2E6D99482196FEB7001102FC /* InvokedCountProperty.swift in Sources */,
+				2E6D99462196FEB7001102FC /* ParameterProperty.swift in Sources */,
+				2E6D99442196FEB2001102FC /* String+Extensions.swift in Sources */,
+				2E6D99452196FEB7001102FC /* Property.swift in Sources */,
 				2E8816A0218DD8760058B67A /* FunctionTransformer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
