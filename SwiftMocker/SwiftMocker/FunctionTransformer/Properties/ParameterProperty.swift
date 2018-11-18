@@ -21,9 +21,9 @@ struct ParameterProperty: Property {
     }
     
     var declarationDescription: String {
-//        if isOptionalType {
-//            return "var \(name): \(type)"
-//        }
+        if isOptionalType {
+            return "var \(name): \(type)"
+        }
         return "var \(name): \(type)?"
     }
     

@@ -211,7 +211,7 @@ class FunctionTests: XCTestCase {
     }
     
     
-    
+    //MARK: -
     func testFunctionWithReturnFunction() {
         makeSubject(with: "fetchUser(completion: (Result<User>)->()) -> (Bool)->()")
         
@@ -319,6 +319,25 @@ class FunctionTests: XCTestCase {
         
         let expected = "var invokedHandleConfigFileCount = 0\nvar invokedHandleConfigFileResponse: ConfigFileResponse?\nvar invokedHandleConfigFileCompletion: ()->()?\nvar handleConfigFileDummyValue: Int?\nfunc handleConfigFile(response: ConfigFileResponse, completion: ()->()) -> Int {\n\tinvokedHandleConfigFileCount += 1\n\tinvokedHandleConfigFileResponse = response\n\tinvokedHandleConfigFileCompletion = completion\n\treturn handleConfigFileDummyValue!\n}"
         let actual = sut.mockedFunction
+        XCTAssertEqual(expected, actual)
+    }
+    
+    //MARK: -
+    func testOptionalParameter_ShouldCreateOptionalProperty() {
+        makeSubject(with: "handleFileResult(result: File?)")
+        
+        let expected = "var invokedHandleFileResult: File?"
+        let actual = sut.parameterProperties.first?.declarationDescription
+        
+        XCTAssertEqual(expected, actual)
+    }
+    
+    func testOptionalReturnType_ShouldCreateOptionalProperty() {
+        makeSubject(with: "fileResult() -> File?")
+        
+        let expected = "var fileResultDummyValue: File?"
+        let actual = sut.returnProperty?.declarationDescription
+        
         XCTAssertEqual(expected, actual)
     }
     
