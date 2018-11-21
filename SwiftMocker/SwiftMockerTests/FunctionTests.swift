@@ -322,7 +322,7 @@ class FunctionTests: XCTestCase {
         XCTAssertEqual(expected, actual)
     }
     
-    //MARK: -
+    //MARK: - Optional Parameter
     func testOptionalParameter_ShouldCreateOptionalProperty() {
         makeSubject(with: "handleFileResult(result: File?)")
         
@@ -332,6 +332,7 @@ class FunctionTests: XCTestCase {
         XCTAssertEqual(expected, actual)
     }
     
+    //MARK: - Optional Return Value
     func testOptionalReturnType_ShouldCreateOptionalProperty() {
         makeSubject(with: "fileResult() -> File?")
         
@@ -339,6 +340,33 @@ class FunctionTests: XCTestCase {
         let actual = sut.returnProperty?.declarationDescription
         
         XCTAssertEqual(expected, actual)
+    }
+    
+    // MARK: - Self Return Value
+    
+    func testFunction_ReturnsSelf_ImplementationShouldReturnSelfInstance() {
+        makeSubject(with: "override func responseData(queue: DispatchQueue?, completionHandler: @escaping (DataResponse<Data>) -> Void) -> Self")
+        
+        let expected = "return self"
+        let actual = sut.returnProperty?.implementationDescription
+        
+        XCTAssertEqual(expected, actual)
+    }
+    
+    func testFunction_ReturnsSelf_DeclarationShouldBeEmpty() {
+        makeSubject(with: "override func responseData(queue: DispatchQueue?, completionHandler: @escaping (DataResponse<Data>) -> Void) -> Self")
+        
+        let expected = ""
+        let actual = sut.returnProperty?.declarationDescription
+        
+        XCTAssertEqual(expected, actual)
+    }
+    
+    
+    func testFunction_ReturnsSelf_MockedFunctionShouldntHaveDummyValueUsedForReturn() {
+        makeSubject(with: "override func responseData(queue: DispatchQueue?, completionHandler: @escaping (DataResponse<Data>) -> Void) -> Self")
+        
+        XCTAssertFalse(sut.mockedFunction.contains("DummyValue"))
     }
     
     private func makeSubject(with input: String) {

@@ -13,6 +13,10 @@ struct ReturnProperty: Property {
     let type: String
     
     var declarationDescription: String {
+        if isSelfType {
+            return ""
+        }
+        
         if isOptionalType {
             return "var \(name): \(type)"
         }
@@ -21,10 +25,18 @@ struct ReturnProperty: Property {
     }
     
     var implementationDescription: String {
+        if isSelfType {
+            return "return self"
+        }
+        
         var result = "return \(name)"
         if !isOptionalType {
             result.append("!")
         }
         return result
+    }
+    
+    var isSelfType: Bool {
+        return type == "Self"
     }
 }

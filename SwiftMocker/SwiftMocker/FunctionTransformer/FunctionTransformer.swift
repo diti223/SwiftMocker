@@ -42,7 +42,7 @@ class FunctionTransformer {
             result.append(parametersResult.joined(separator: "\n"))
         }
         
-        if let returnProperty = returnProperty {
+        if let returnProperty = returnProperty, !returnProperty.isSelfType {
             result.addNewLine()
             result.append(returnProperty.declarationDescription)
         }
@@ -66,11 +66,7 @@ class FunctionTransformer {
         
         if let returnProperty = returnProperty {
             result.addNewLineTab()
-//            if returnProperty.isOptionalType {
-//                result.append("return \(returnProperty.name)")
-//            } else {
-                result.append("return \(returnProperty.name)!")
-//            }
+            result.append(returnProperty.implementationDescription)
         }
         result.append("\n}")
         return result
